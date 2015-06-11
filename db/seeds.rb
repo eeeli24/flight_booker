@@ -4,12 +4,12 @@ codes.each do |code|
   Airport.create!(name: code)
 end
 
-# Build 3 flights from each to each airport
+# Build flights from each to each airport
 airports = Airport.all
 airports.each do |from_airport|
   airports.each do |to_airport|
     unless to_airport == from_airport
-      3.times do
+      10.times do
         flight = from_airport.departing_flights.build(
                    to_airport_id: to_airport.id, 
                    date: rand(4.days).seconds.from_now.beginning_of_hour)

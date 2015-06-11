@@ -1,8 +1,8 @@
 <p>Flights for <%= @flights.first.date.strftime('%B %d, %Y') %></p>
-<%= form_tag book_path, method: 'get' do %>
+<%= form_tag new_booking_path, method: 'get' do %>
   <%= hidden_field_tag(:passengers_selected, @passengers_selected) %>
   <% @flights.each do |f| %>
-    <%= radio_button_tag(:flight, f.date) %>
+    <%= radio_button_tag(:flight_id, f.id) %>
     <%= label_tag(:flight, f.date.strftime('%I:%M %P')) %>
   <% end %>
   <%= submit_tag 'Book a flight', name: nil %>
