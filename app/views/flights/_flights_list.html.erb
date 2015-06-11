@@ -5,7 +5,7 @@
       <%= hidden_field_tag(:passengers_selected, @passengers_selected) %>
       <% @flights.each do |f| %>
       <p>
-        <%= radio_button_tag(:flight_id, f.id, checked = false, class: 'with-gap') %>
+        <%= radio_button_tag(:flight_id, f.id, class: 'with-gap') %>
         <%= label_tag("flight_id_#{f.id}", f.date.strftime('%I:%M %P'), class: 'white-text') %>
       </p>
       <% end %>
