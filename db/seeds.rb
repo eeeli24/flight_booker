@@ -12,7 +12,7 @@ airports.each do |from_airport|
       10.times do
         flight = from_airport.departing_flights.build(
                    to_airport_id: to_airport.id, 
-                   date: rand(2.days).seconds.from_now.beginning_of_hour)
+                   date: rand(2.days).seconds.from_now.beginning_of_hour.to_datetime)
         flight.save!
       end
     end
