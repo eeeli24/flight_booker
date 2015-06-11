@@ -1,9 +1,17 @@
-<p>Flights for <%= @flights.first.date.strftime('%B %d, %Y') %></p>
-<%= form_tag new_booking_path, method: 'get' do %>
-  <%= hidden_field_tag(:passengers_selected, @passengers_selected) %>
-  <% @flights.each do |f| %>
-    <%= radio_button_tag(:flight_id, f.id) %>
-    <%= label_tag(:flight, f.date.strftime('%I:%M %P')) %>
-  <% end %>
-  <%= submit_tag 'Book a flight', name: nil %>
-<% end %>
+<div class='card teal darken-2'>
+  <div class='card-content white-text'>
+    <span class='card-title'>Flights for <%= @flights.first.date.strftime('%B %d, %Y') %></span>
+    <%= form_tag new_booking_path, method: 'get' do %>
+      <%= hidden_field_tag(:passengers_selected, @passengers_selected) %>
+      <% @flights.each do |f| %>
+      <p>
+        <%= radio_button_tag(:flight_id, f.id, checked = false, class: 'with-gap') %>
+        <%= label_tag("flight_id_#{f.id}", f.date.strftime('%I:%M %P'), class: 'white-text') %>
+      </p>
+      <% end %>
+      <div class='card-action valign-wrapper'>
+        <%= submit_tag 'Book a flight', name: nil, class: 'btn valign' %>
+      </div>
+    <% end %>
+  </div>
+</div>

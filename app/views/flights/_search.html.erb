@@ -1,0 +1,30 @@
+<div class='row'>
+  <div class='col s12'>
+    <h1 class='center-align'>Search for a flight</h1>
+    <%= form_tag flights_path, method: 'get' do %>
+      <div class='input-field col s3'>
+        <%= select_tag :from_airport, options_from_collection_for_select(Airport.all, :id, :name) %>
+        <%= label_tag :from_airport %>
+      </div>
+      <div class='input-field col s3'>
+        <%= select_tag :to_airport, options_from_collection_for_select( Airport.all, :id, :name) %>
+        <%= label_tag :to_airport %>
+      </div>
+      <div class='input-field col s3'>
+        <%= select_tag :passengers, options_for_select(@passengers) %>
+        <%= label_tag :number_of_passengers %>
+      </div>
+      <div class='input-field col s3'>
+        <%= select_tag :date, options_for_select(@dates) %>
+        <%= label_tag :date %>
+      </div>
+      <%= submit_tag 'Search', name: nil, class: 'btn right' %>
+    <% end %>
+  </div>
+</div>
+
+<script type='text/javascript'>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>

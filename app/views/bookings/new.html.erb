@@ -1,13 +1,23 @@
-<p>Book a flight for <%= @num_of_passengers %> passengers on <%= @flight.date %> from <%= @flight.from_airport.name %> to <%= @flight.to_airport.name %>.</p>
+<div class='row'>
+  <div class='col s8 offset-s2'>
+    <h2>Enter passengers details</h2>
 
-<%= form_for @booking do |b| %>
-  <%= b.hidden_field(:num_of_passengers, value: @num_of_passengers) %>
-  <%= b.hidden_field(:flight_id, value: @flight.id) %>
-    <%= b.fields_for :passengers do |p| %>
-      <%= p.text_field :name %>
-      <%= p.label :name %>
-      <%= p.text_field :email %>
-      <%= p.label :email %>
+    <%= form_for @booking do |b| %>
+      <%= b.hidden_field(:num_of_passengers, value: @num_of_passengers) %>
+      <%= b.hidden_field(:flight_id, value: @flight.id) %>
+        <%= b.fields_for :passengers do |p| %>
+          <div class='row'>
+            <div class='input-field col s6'>
+              <%= p.text_field :name %>
+              <%= p.label :name %>
+            </div>
+            <div class='input-field col s6'>
+              <%= p.text_field :email %>
+              <%= p.label :email %>
+            </div>
+          </div>
+        <% end %>
+      <%= b.submit 'Book', class: 'btn right' %>
     <% end %>
-  <%= b.submit %>
-<% end %>
+  </div>
+</div>

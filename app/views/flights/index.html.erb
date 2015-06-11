@@ -1,11 +1,11 @@
-<%= form_tag flights_path, method: 'get' do %>
-    <%= select_tag :from_airport, options_from_collection_for_select(Airport.all, :id, :name) %>
-    <%= select_tag :to_airport, options_from_collection_for_select( Airport.all, :id, :name) %>
-    <%= select_tag :passengers, options_for_select(@passengers) %>
-    <%= select_tag :date, options_for_select(@dates) %>
-    <%= submit_tag 'Search', name: nil %>
-<% end %>
+<div class='row'>
+  <div class='col s8 offset-s2'>
+      <%= render 'search' %>
 
-<% unless @flights.empty? %>
-  <%= render 'flights_list' %>
-<% end %>
+
+      <% unless @flights.empty? %>
+        <%= render 'flights_list' %>
+      <% end %>
+    
+  </div>
+</div>

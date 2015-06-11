@@ -1,4 +1,38 @@
-<%= @booking.flight.date %>
-<% @booking.passengers.each do |passenger| %>
-  <%= passenger.name %>
-<% end %>
+<div class='row'>
+  <div class='col s8 offset-s2'>
+    <div class='card teal darken-2'>
+      <div class='card-content white-text'>
+        <span class='card-title'>Success!</span>
+        <p>Booking details:</p>
+        <div class='row'>
+          <div class='col s6'>
+            <p>
+              <i class='mdi-maps-flight'></i>
+              From: <%= @booking.flight.from_airport.name %> To: <%= @booking.flight.to_airport.name %>
+            </p>
+          </div>
+          <div>
+            <p>
+              <i class='mdi-action-schedule'></i>
+              <%= @booking.flight.date.strftime('%B %d %Y %I:%M %P') %>
+            </p>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col s12'>
+            <p>Passengers</p>
+            <% @booking.passengers.each do |passenger| %>
+              <p>
+                <i class='mdi-social-person'></i>
+                <%= passenger.name %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        <div class='card-action'>
+          <%= link_to 'Awesome, search again!', root_path, class: 'right' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
