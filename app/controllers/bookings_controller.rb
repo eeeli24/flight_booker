@@ -18,7 +18,16 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @booking }
+      format.json { render :json =>
+                    { :booking => @booking.as_json(only: [:id, :flight_id, :passengers]),
+                      :passengers => @booking.passengers.as_json(only: [:name, :email]),
+                      :flight  => @booking.flight.as_json(only: [:from_airport_id, :to_airport_id]) }}
+    end
   end
+
   private
 
   def booking_params
